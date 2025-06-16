@@ -64,16 +64,16 @@ services:
   # The MySQL container.
   ##
   mysql:
-    image: ${LOCAL_DB_TYPE-mysql}:${LOCAL_DB_VERSION-latest}
+    image: oceanbase/oceanbase-ce:4.3.5-lts
 
     networks:
       - wpdevnet
 
     ports:
-      - "3306"
+      - "2881"
 
     environment:
-      MYSQL_ROOT_PASSWORD: password
+      OB_TENANT_PASSWORD: ShengTai@2024yyds
 
     volumes:
       - ./tools/local-env/mysql-init.sql:/docker-entrypoint-initdb.d/mysql-init.sql
@@ -81,6 +81,7 @@ services:
 
     # For compatibility with PHP versions that don't support the caching_sha2_password auth plugin used in MySQL 8.0.
     command: ${LOCAL_DB_AUTH_OPTION-}
+    command: ["obd", "start", "mini-single-example"]
 
     healthcheck:
       test: [
