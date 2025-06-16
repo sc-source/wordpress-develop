@@ -80,14 +80,10 @@ services:
       - mysql:/var/lib/mysql
 
     # For compatibility with PHP versions that don't support the caching_sha2_password auth plugin used in MySQL 8.0.
-    command: ${LOCAL_DB_AUTH_OPTION-}
     command: ["obd", "start", "mini-single-example"]
 
     healthcheck:
-      test: [
-        'CMD-SHELL',
-        'if [ "$LOCAL_DB_TYPE" = "mariadb" ]; then case "$LOCAL_DB_VERSION" in 5.5|10.0|10.1|10.2|10.3) mysqladmin ping -h localhost || exit $$?;; *) mariadb-admin ping -h localhost || exit $$?;; esac; else mysqladmin ping -h localhost || exit $$?; fi'
-      ]
+      test: ["CMD-SHELL", "obd cluster list | grep 'running' || exit 1"]
       timeout: 5s
       interval: 5s
       retries: 10
