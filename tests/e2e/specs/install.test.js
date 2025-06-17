@@ -16,8 +16,6 @@ test.describe( 'WordPress installation process', () => {
 		process.cwd(),
 		'wp-config.php',
 	);
-	wpConfigOriginal = readFileSync(wpConfig, 'utf-8');
-	console.log('Original wp-config:', wpConfigOriginal);
 
 	test.beforeEach( async () => {
 		wpConfigOriginal = readFileSync( wpConfig, 'utf-8' );
@@ -27,11 +25,13 @@ test.describe( 'WordPress installation process', () => {
 			wpConfigOriginal.replace( `$table_prefix = 'wp_';`, `$table_prefix = 'wp_e2e_';` )
 		);
 	} );
-
+	
 	test.afterEach( async () => {
 		writeFileSync( wpConfig, wpConfigOriginal );
 	} );
-
+		
+	wpConfigOriginal = readFileSync(wpConfig, 'utf-8');
+	console.log('Original wp-config:', wpConfigOriginal);
 	test( 'should install WordPress with pre-existing database credentials', async ( { page } ) => {
 		await page.goto( '/' );
 
