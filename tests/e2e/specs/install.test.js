@@ -29,9 +29,7 @@ test.describe( 'WordPress installation process', () => {
 	test.afterEach( async () => {
 		writeFileSync( wpConfig, wpConfigOriginal );
 	} );
-		
-	wpConfigOriginal = readFileSync(wpConfig, 'utf-8');
-	console.log('Original wp-config:', wpConfigOriginal);
+	
 	test( 'should install WordPress with pre-existing database credentials', async ( { page } ) => {
 		await page.goto( '/' );
 
