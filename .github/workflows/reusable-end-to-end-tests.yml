@@ -94,8 +94,7 @@ jobs:
           curl --version
           git --version
           locale -a
-          docker logs -f wordpress-develop-mysql-1
-
+          
       - name: Install npm Dependencies
         run: npm ci
 
@@ -120,6 +119,8 @@ jobs:
           docker compose run --rm php php -m
           docker compose run --rm php php -i
           docker compose run --rm php locale -a
+          docker logs -f wordpress-develop-mysql-1
+
 
       - name: Install WordPress
         env:
