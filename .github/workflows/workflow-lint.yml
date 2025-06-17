@@ -6,6 +6,7 @@ on:
       - trunk
       - '6.[8-9]'
       - '[7-9].[0-9]'
+      - oceanbase-wordpress
     paths:
       # Only run when changes are made to workflow files.
       - '.github/workflows/**'
