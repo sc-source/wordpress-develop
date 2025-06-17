@@ -112,15 +112,6 @@ jobs:
       - name: Log running Docker containers
         run: docker ps -a
 
-      - name: Docker debug information
-        run: |
-          docker -v
-          docker compose run --rm mysql mysql --version
-          docker compose run --rm php php --version
-          docker compose run --rm php php -m
-          docker compose run --rm php php -i
-          docker compose run --rm php locale -a
-
       - name: Install WordPress
         env:
           LOCAL_SCRIPT_DEBUG: ${{ inputs.LOCAL_SCRIPT_DEBUG }}
