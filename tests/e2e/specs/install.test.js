@@ -21,7 +21,6 @@ test.describe( 'WordPress installation process', () => {
 		wpConfigOriginal = readFileSync( wpConfig, 'utf-8' );
 		// Changing the table prefix tricks WP into new install mode.
 		const newContent = wpConfigOriginal.replace( `$table_prefix = 'wp_';`, `$table_prefix = 'wp_e2e_';` );
-		console.log('New wp-config:', newContent);
 		writeFileSync(
 			wpConfig,
 			newContent
