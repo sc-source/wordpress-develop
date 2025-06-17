@@ -32,5 +32,14 @@ const returns = spawnSync(
 	],
 	{ stdio: 'inherit' }
 );
+const fullDockerCommand = [
+	'docker',
+	'compose',
+	...composeFiles
+		.map( ( composeFile ) => [ '-f', composeFile ] )
+		.flat(),
+	...dockerCommand,
+];
+console.log('Executing Docker command:', fullDockerCommand.join(' '));
 
 process.exit( returns.status );
