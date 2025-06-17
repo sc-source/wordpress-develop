@@ -75,6 +75,7 @@ services:
     environment:
       OB_TENANT_PASSWORD: ShengTai@2024yyds
       MODE: MINI
+      OB_DATAFILE_SIZE: 2G
 
     volumes:
       - ./tools/local-env/mysql-init.sql:/docker-entrypoint-initdb.d/mysql-init.sql
