@@ -196,3 +196,4 @@
 		"postsync-gutenberg-packages": "grunt wp-packages:sync-stable-blocks && grunt build --dev && grunt build"
 	}
 }
+
