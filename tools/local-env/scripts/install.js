@@ -13,7 +13,7 @@ dotenvExpand.expand( dotenv.config() );
 local_env_utils.determine_auth_option();
 
 // Create wp-config.php.
-wp_cli( `config create --dbname=wordpress_develop --dbuser=root@test --dbpass=ShengTai@2024yyds --dbhost=127.0.0.1:32768 --force --config-file="wp-config.php"` );
+wp_cli( `config create --dbname=wordpress_develop --dbuser=root@test --dbpass=ShengTai@2024yyds --dbhost=172.18.0.2:2881 --force --config-file="wp-config.php"` );
 
 // Since WP-CLI runs as root, the wp-config.php created above will be read-only. This needs to be writable for the sake of E2E tests.
 execSync( 'node ./tools/local-env/scripts/docker.js exec cli chmod 666 wp-config.php' );
