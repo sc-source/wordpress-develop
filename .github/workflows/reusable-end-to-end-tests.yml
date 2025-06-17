@@ -125,7 +125,7 @@ jobs:
           docker logs wordpress-develop-mysql-1
           sleep 10s
           mysql --version
-          mysql -h127.0.0.1 -P32768 -pShengTai@2024yyds -uroot@test -e 'show databases'
+          mysql -h172.18.0.2 -P2881 -pShengTai@2024yyds -uroot@test -e 'show databases'
 
 
       - name: Install WordPress
