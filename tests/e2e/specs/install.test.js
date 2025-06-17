@@ -16,7 +16,8 @@ test.describe( 'WordPress installation process', () => {
 		process.cwd(),
 		'wp-config.php',
 	);
-
+	wpConfigOriginal = readFileSync(wpConfig, 'utf-8');
+	console.log('Original wp-config:', wpConfigOriginal);
 
 	test.beforeEach( async () => {
 		wpConfigOriginal = readFileSync( wpConfig, 'utf-8' );
