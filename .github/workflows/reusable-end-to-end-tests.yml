@@ -120,11 +120,12 @@ jobs:
           docker compose run --rm php php -i
           docker compose run --rm php locale -a
           sleep 10s
-          mysql -v
           docker logs wordpress-develop-mysql-1
           sleep 10s
           docker logs wordpress-develop-mysql-1
           sleep 10s
+          apt install -y mysql-client
+          mysql --version
           mysql -h127.0.0.1 -P32768 -pShengTai@2024yyds -uroot@test -e 'show databases'
 
 
