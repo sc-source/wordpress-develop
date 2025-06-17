@@ -119,7 +119,9 @@ jobs:
           docker compose run --rm php php -m
           docker compose run --rm php php -i
           docker compose run --rm php locale -a
-          docker logs -f wordpress-develop-mysql-1
+          sleep 10s
+          mysql -v
+          mysql -h127.0.0.1 -P32768 -pShengTai@2024yyds -uroot@test -e 'show databases'
 
 
       - name: Install WordPress
