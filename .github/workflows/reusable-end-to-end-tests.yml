@@ -94,6 +94,7 @@ jobs:
           curl --version
           git --version
           locale -a
+          docker logs -f wordpress-develop-mysql-1
 
       - name: Install npm Dependencies
         run: npm ci
