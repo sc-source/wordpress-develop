@@ -20,9 +20,11 @@ test.describe( 'WordPress installation process', () => {
 	test.beforeEach( async () => {
 		wpConfigOriginal = readFileSync( wpConfig, 'utf-8' );
 		// Changing the table prefix tricks WP into new install mode.
+		const newContent = wpConfigOriginal.replace( `$table_prefix = 'wp_';`, `$table_prefix = 'wp_e2e_';` );
+		console.log('New wp-config:', newContent);
 		writeFileSync(
 			wpConfig,
-			wpConfigOriginal.replace( `$table_prefix = 'wp_';`, `$table_prefix = 'wp_e2e_';` )
+			newContent
 		);
 	} );
 	
@@ -31,6 +33,8 @@ test.describe( 'WordPress installation process', () => {
 	} );
 	
 	test( 'should install WordPress with pre-existing database credentials', async ( { page } ) => {
+		console.log('Waiting for 10 seconds...');
+		await new Promise(resolve => setTimeout(resolve, 10000));
 		await page.goto( '/' );
 
 		await expect(
