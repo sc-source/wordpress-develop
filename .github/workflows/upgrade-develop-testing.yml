@@ -54,7 +54,7 @@ jobs:
   upgrade-tests-develop:
     name: Upgrade from ${{ matrix.wp }}
     uses: ./.github/workflows/reusable-upgrade-testing.yml
-    if: ${{ github.repository == 'WordPress/wordpress-develop' || ( github.event_name == 'pull_request' && github.actor != 'dependabot[bot]' ) }}
+    if: ${{ github.repository == 'sc-source/wordpress-develop' || ( github.event_name == 'pull_request' && github.actor != 'dependabot[bot]' ) }}
     needs: [ build ]
     strategy:
       fail-fast: false
@@ -90,7 +90,7 @@ jobs:
       actions: read
       contents: read
     needs: [ upgrade-tests-develop ]
-    if: ${{ github.repository == 'WordPress/wordpress-develop' && github.event_name != 'pull_request' && always() }}
+    if: ${{ github.repository == 'sc-source/wordpress-develop' && github.event_name != 'pull_request' && always() }}
     with:
       calling_status: ${{ contains( needs.*.result, 'cancelled' ) && 'cancelled' || contains( needs.*.result, 'failure' ) && 'failure' || 'success' }}
     secrets:
@@ -107,7 +107,7 @@ jobs:
     needs: [ slack-notifications ]
     if: |
       always() &&
-      github.repository == 'WordPress/wordpress-develop' &&
+      github.repository == 'sc-source/wordpress-develop' &&
       github.event_name != 'pull_request' &&
       github.run_attempt < 2 &&
       (

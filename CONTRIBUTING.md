@@ -21,7 +21,7 @@ If this is your first time contributing, you may also find reviewing these guide
 
 The [WordPress.org Trac](https://core.trac.wordpress.org) is the official bug tracker for the WordPress Core.
 
-Patches can be submitted within Trac or via [GitHub](https://github.com/wordpress/wordpress-develop).
+Patches can be submitted within Trac or via [GitHub](https://github.com/sc-source/wordpress-develop).
 
 Please read the [GitHub Pull Requests for Code Review](https://make.wordpress.org/core/handbook/contribute/git/github-pull-requests-for-code-review/) page for details on how to submit a pull request in GitHub to fix a Trac ticket.
 

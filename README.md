@@ -45,7 +45,7 @@ Ensure [Docker](https://www.docker.com/products/docker-desktop) is running befor
 
 #### To start the development environment for the first time
 
-Clone the current repository using `git clone https://github.com/WordPress/wordpress-develop.git`. Then in your terminal move to the repository folder `cd wordpress-develop` and run the following commands:
+Clone the current repository using `git clone https://github.com/sc-source/wordpress-develop.git`. Then in your terminal move to the repository folder `cd wordpress-develop` and run the following commands:
 
 ```
 npm install
@@ -95,7 +95,7 @@ npm run test:php -- --group <group name or ticket number>
 ```
 
 #### Generating a code coverage report
-PHP code coverage reports are [generated daily](https://github.com/WordPress/wordpress-develop/actions/workflows/test-coverage.yml) and [submitted to Codecov.io](https://app.codecov.io/gh/WordPress/wordpress-develop).
+PHP code coverage reports are [generated daily](https://github.com/sc-source/wordpress-develop/actions/workflows/test-coverage.yml) and [submitted to Codecov.io](https://app.codecov.io/gh/sc-source/wordpress-develop).
 
 After the local Docker environment has [been installed and started](#to-start-the-development-environment-for-the-first-time), the following command can be used to generate a code coverage report. 
 

@@ -51,7 +51,7 @@ jobs:
     uses: ./.github/workflows/reusable-test-core-build-process.yml
     permissions:
       contents: read
-    if: ${{ github.repository == 'WordPress/wordpress-develop' || ( github.event_name == 'pull_request' && github.actor != 'dependabot[bot]' ) }}
+    if: ${{ github.repository == 'sc-source/wordpress-develop' || ( github.event_name == 'pull_request' && github.actor != 'dependabot[bot]' ) }}
     strategy:
       fail-fast: false
       matrix:
@@ -83,7 +83,7 @@ jobs:
     uses: ./.github/workflows/reusable-test-core-build-process.yml
     permissions:
       contents: read
-    if: ${{ github.repository == 'WordPress/wordpress-develop' }}
+    if: ${{ github.repository == 'sc-source/wordpress-develop' }}
     strategy:
       fail-fast: false
       matrix:
@@ -99,7 +99,7 @@ jobs:
     uses: ./.github/workflows/reusable-test-gutenberg-build-process.yml
     permissions:
       contents: read
-    if: ${{ github.repository == 'WordPress/wordpress-develop' || ( github.event_name == 'pull_request' && github.actor != 'dependabot[bot]' ) }}
+    if: ${{ github.repository == 'sc-source/wordpress-develop' || ( github.event_name == 'pull_request' && github.actor != 'dependabot[bot]' ) }}
     strategy:
       fail-fast: false
       matrix:
@@ -122,7 +122,7 @@ jobs:
     uses: ./.github/workflows/reusable-test-gutenberg-build-process.yml
     permissions:
       contents: read
-    if: ${{ github.repository == 'WordPress/wordpress-develop' }}
+    if: ${{ github.repository == 'sc-source/wordpress-develop' }}
     strategy:
       fail-fast: false
       matrix:
@@ -139,7 +139,7 @@ jobs:
       actions: read
       contents: read
     needs: [ test-core-build-process, test-core-build-process-macos, test-gutenberg-build-process, test-gutenberg-build-process-macos ]
-    if: ${{ github.repository == 'WordPress/wordpress-develop' && github.event_name != 'pull_request' && always() }}
+    if: ${{ github.repository == 'sc-source/wordpress-develop' && github.event_name != 'pull_request' && always() }}
     with:
       calling_status: ${{ contains( needs.*.result, 'cancelled' ) && 'cancelled' || contains( needs.*.result, 'failure' ) && 'failure' || 'success' }}
     secrets:
@@ -156,7 +156,7 @@ jobs:
     needs: [ slack-notifications ]
     if: |
       always() &&
-      github.repository == 'WordPress/wordpress-develop' &&
+      github.repository == 'sc-source/wordpress-develop' &&
       github.event_name != 'pull_request' &&
       github.run_attempt < 2 &&
       (

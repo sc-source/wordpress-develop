@@ -127,7 +127,7 @@ jobs:
       # leave a comment detailing how to test the PR within WordPress Playground.
       - name: Upload PR number as artifact
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
-        if: ${{ inputs.prepare-playground && github.repository == 'WordPress/wordpress-develop' && github.event_name == 'pull_request' }}
+        if: ${{ inputs.prepare-playground && github.repository == 'sc-source/wordpress-develop' && github.event_name == 'pull_request' }}
         with:
           name: pr-number
           path: pr-number/

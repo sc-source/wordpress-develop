@@ -35,7 +35,7 @@ jobs:
   update-built-files:
     name: Check and update built files
     runs-on: ubuntu-24.04
-    if: ${{ github.repository == 'wordpress/wordpress-develop' }}
+    if: ${{ github.repository == 'sc-source/wordpress-develop' }}
     timeout-minutes: 10
     permissions:
       contents: write

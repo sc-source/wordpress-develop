@@ -51,7 +51,7 @@ jobs:
   determine-matrix:
     name: Determine Matrix
     runs-on: ubuntu-24.04
-    if: ${{ ( github.repository == 'WordPress/wordpress-develop' || ( github.event_name == 'pull_request' && github.actor != 'dependabot[bot]' ) ) && ! contains( github.event.before, '00000000' ) }}
+    if: ${{ ( github.repository == 'sc-source/wordpress-develop' || ( github.event_name == 'pull_request' && github.actor != 'dependabot[bot]' ) ) && ! contains( github.event.before, '00000000' ) }}
     permissions: {}
     env:
       TARGET_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
@@ -134,7 +134,7 @@ jobs:
       actions: read
       contents: read
     needs: [ performance ]
-    if: ${{ github.repository == 'WordPress/wordpress-develop' && github.event_name != 'pull_request' && always() }}
+    if: ${{ github.repository == 'sc-source/wordpress-develop' && github.event_name != 'pull_request' && always() }}
     with:
       calling_status: ${{ contains( needs.*.result, 'cancelled' ) && 'cancelled' || contains( needs.*.result, 'failure' ) && 'failure' || 'success' }}
     secrets:
@@ -151,7 +151,7 @@ jobs:
     needs: [ slack-notifications ]
     if: |
       always() &&
-      github.repository == 'WordPress/wordpress-develop' &&
+      github.repository == 'sc-source/wordpress-develop' &&
       github.event_name != 'pull_request' &&
       github.run_attempt < 2 &&
       (

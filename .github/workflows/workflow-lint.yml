@@ -34,7 +34,7 @@ jobs:
   lint:
     name: Lint GitHub Action files
     uses: ./.github/workflows/reusable-workflow-lint.yml
-    if: ${{ github.repository == 'WordPress/wordpress-develop' || github.event_name == 'workflow_dispatch' || ( github.event_name == 'pull_request' && github.actor != 'dependabot[bot]' ) }}
+    if: ${{ github.repository == 'sc-source/wordpress-develop' || github.event_name == 'workflow_dispatch' || ( github.event_name == 'pull_request' && github.actor != 'dependabot[bot]' ) }}
     permissions:
       security-events: write
       actions: read
@@ -47,7 +47,7 @@ jobs:
       actions: read
       contents: read
     needs: [ lint ]
-    if: ${{ github.repository == 'WordPress/wordpress-develop' && github.event_name != 'pull_request' && always() }}
+    if: ${{ github.repository == 'sc-source/wordpress-develop' && github.event_name != 'pull_request' && always() }}
     with:
       calling_status: ${{ contains( needs.*.result, 'cancelled' ) && 'cancelled' || contains( needs.*.result, 'failure' ) && 'failure' || 'success' }}
     secrets:
@@ -64,7 +64,7 @@ jobs:
     needs: [ slack-notifications ]
     if: |
       always() &&
-      github.repository == 'WordPress/wordpress-develop' &&
+      github.repository == 'sc-source/wordpress-develop' &&
       github.event_name != 'pull_request' &&
       github.run_attempt < 2 &&
       (

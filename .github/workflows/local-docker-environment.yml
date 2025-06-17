@@ -73,7 +73,7 @@ jobs:
     permissions:
       contents: read
     secrets: inherit
-    if: ${{ github.repository == 'WordPress/wordpress-develop' || ( github.event_name == 'pull_request' && github.actor != 'dependabot[bot]' ) }}
+    if: ${{ github.repository == 'sc-source/wordpress-develop' || ( github.event_name == 'pull_request' && github.actor != 'dependabot[bot]' ) }}
     with:
       wp-version: ${{ github.event_name == 'pull_request' && github.base_ref || github.ref_name }}
 
@@ -119,7 +119,7 @@ jobs:
       actions: read
       contents: read
     needs: [ build-test-matrix, environment-tests-mysql ]
-    if: ${{ github.repository == 'WordPress/wordpress-develop' && github.event_name != 'pull_request' && always() }}
+    if: ${{ github.repository == 'sc-source/wordpress-develop' && github.event_name != 'pull_request' && always() }}
     with:
       calling_status: ${{ contains( needs.*.result, 'cancelled' ) && 'cancelled' || contains( needs.*.result, 'failure' ) && 'failure' || 'success' }}
     secrets:
@@ -136,7 +136,7 @@ jobs:
     needs: [ build-test-matrix, environment-tests-mysql, slack-notifications ]
     if: |
       always() &&
-      github.repository == 'WordPress/wordpress-develop' &&
+      github.repository == 'sc-source/wordpress-develop' &&
       github.event_name != 'pull_request' &&
       github.run_attempt < 2 &&
       (

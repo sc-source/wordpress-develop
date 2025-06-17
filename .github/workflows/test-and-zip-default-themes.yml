@@ -63,7 +63,7 @@ jobs:
     permissions:
       contents: read
     timeout-minutes: 10
-    if: ${{ github.repository == 'WordPress/wordpress-develop' || ( github.event_name == 'pull_request' && github.actor != 'dependabot[bot]' ) }}
+    if: ${{ github.repository == 'sc-source/wordpress-develop' || ( github.event_name == 'pull_request' && github.actor != 'dependabot[bot]' ) }}
     strategy:
       fail-fast: false
       matrix:
@@ -113,7 +113,7 @@ jobs:
     permissions:
       contents: read
     timeout-minutes: 10
-    if: ${{ github.repository == 'WordPress/wordpress-develop' || ( github.event_name == 'pull_request' && github.actor != 'dependabot[bot]' ) }}
+    if: ${{ github.repository == 'sc-source/wordpress-develop' || ( github.event_name == 'pull_request' && github.actor != 'dependabot[bot]' ) }}
     strategy:
       fail-fast: false
       matrix:
@@ -163,7 +163,7 @@ jobs:
       contents: read
     needs: [ check-for-empty-files, test-build-scripts ]
     timeout-minutes: 10
-    if: ${{ github.repository == 'WordPress/wordpress-develop' || github.event_name == 'pull_request' }}
+    if: ${{ github.repository == 'sc-source/wordpress-develop' || github.event_name == 'pull_request' }}
     strategy:
       fail-fast: false
       matrix:
@@ -208,7 +208,7 @@ jobs:
       actions: read
       contents: read
     needs: [ check-for-empty-files, bundle-theme, test-build-scripts ]
-    if: ${{ github.repository == 'WordPress/wordpress-develop' && github.event_name != 'pull_request' && always() }}
+    if: ${{ github.repository == 'sc-source/wordpress-develop' && github.event_name != 'pull_request' && always() }}
     with:
       calling_status: ${{ contains( needs.*.result, 'cancelled' ) && 'cancelled' || contains( needs.*.result, 'failure' ) && 'failure' || 'success' }}
     secrets:
@@ -225,7 +225,7 @@ jobs:
     needs: [ slack-notifications ]
     if: |
       always() &&
-      github.repository == 'WordPress/wordpress-develop' &&
+      github.repository == 'sc-source/wordpress-develop' &&
       github.event_name != 'pull_request' &&
       github.run_attempt < 2 &&
       (

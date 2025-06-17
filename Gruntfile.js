@@ -497,7 +497,7 @@ module.exports = function(grunt) {
 				options: {
 					processContent: function( src ) {
 						return src.replace( /uses: \.\/\.github\/workflows\/([^\.]+)\.yml/g, function( match, $1 ) {
-							return 'uses: WordPress/wordpress-develop/.github/workflows/' + $1 + '.yml@trunk';
+							return 'uses: sc-source/wordpress-develop/.github/workflows/' + $1 + '.yml@trunk';
 						} );
 					}
 				},
@@ -1352,7 +1352,7 @@ module.exports = function(grunt) {
 			 * - When backporting fixes to older WordPress releases.
 			 *
 			 * For more context, see:
-			 * https://github.com/WordPress/wordpress-develop/pull/2621#discussion_r859840515
+			 * https://github.com/sc-source/wordpress-develop/pull/2621#discussion_r859840515
 			 * https://core.trac.wordpress.org/ticket/55559
 			 */
 			grunt.task.run( 'browserslist:update' );
